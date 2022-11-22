@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.5.1'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '1.5.0'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -36,9 +36,9 @@ class MainMenuState extends MusicBeatState
 		'story_mode',
 		'freeplay',
 		#if MODS_ALLOWED 'mods', #end
-		#if ACHIEVEMENTS_ALLOWED 'awards', #end
+		//#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
-		#if !switch 'donate', #end
+		//#if !switch 'donate', #end
 		'options'
 	];
 
@@ -46,6 +46,7 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
+	var char:FlxSprite;
 
 	override function create()
 	{
@@ -113,7 +114,8 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
+			menuItem.x = 150;
+			//menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -125,11 +127,11 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Niterhalereal v" + psychEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' Vs Niterhalereal v" + Application.current.meta.get('version'), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -157,6 +159,42 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		super.create();
+		
+		switch(FlxG.random.int(1, 3))
+		{
+		      case 1:
+                char = new FlxSprite(820, 170).loadGraphic(Paths.image('MenuCharacter/Niterhalereal'));//put your cords and image here
+                char.frames = Paths.getSparrowAtlas('MenuCharacter/Niterhalereal');//here put the name of the xml
+                char.animation.addByPrefix('idleN', 'idle', 24, true);//on 'idle normal' change it to your xml one
+                char.animation.play('idleN');//you can rename the anim however you want to
+                char.scrollFactor.set();
+                FlxG.sound.play(Paths.sound('appear'), 2);
+                char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+                char.antialiasing = ClientPrefs.globalAntialiasing;
+                add(char);
+		      
+		      case 2:
+	              char = new FlxSprite(820, 170).loadGraphic(Paths.image('MenuCharacter/NiterhaleRealFreeplay'));//put your cords and image here
+                char.frames = Paths.getSparrowAtlas('MenuCharacter/NiterhalerealFreeplay');//here put the name of the xml
+                char.animation.addByPrefix('idleF', 'idle', 15, true);//on 'idle normal' change it to your xml one
+                char.animation.play('idleF');//you can rename the anim however you want to
+                char.scrollFactor.set();
+                FlxG.sound.play(Paths.sound('appear'), 2);
+                char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+                char.antialiasing = ClientPrefs.globalAntialiasing;
+                add(char);
+                
+          case 3:
+                 char = new FlxSprite(820, 170).loadGraphic(Paths.image('MenuCharacter/Niteroptions'));//put your cords and image here
+                char.frames = Paths.getSparrowAtlas('MenuCharacter/Niteroptions');//here put the name of the xml
+                char.animation.addByPrefix('idleO', 'idle', 24, true);//on 'idle normal' change it to your xml one
+                char.animation.play('idleO');//you can rename the anim however you want to
+                char.scrollFactor.set();
+                FlxG.sound.play(Paths.sound('appear'), 2);
+                char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+                char.antialiasing = ClientPrefs.globalAntialiasing;
+                add(char);
+		}
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
@@ -267,7 +305,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			spr.screenCenter(X);
+			//spr.screenCenter(X);
 		});
 	}
 
