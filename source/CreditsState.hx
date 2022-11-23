@@ -79,6 +79,10 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+      ['Vs Niterhalereal V1.5'],
+      ['Niterhalereal',   'Niter',    'king mods complete 3 song and complete character',   'https://youtube.com/@niter_fnf_mods_android',    '808080'],
+      ['ayedFNF',   'ayed',   'coder and source code also complete song beverages',   'https://youtube.com/channel/UC70gvzhKBv10pjPfq1iL4RA',   '00FFFF',],
+      [''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',						'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'riveroaken',		'Main Artist/Animator of Psych Engine',					'https://twitter.com/river_oaken',		'C30085'],
