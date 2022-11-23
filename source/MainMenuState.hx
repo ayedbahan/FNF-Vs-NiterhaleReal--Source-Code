@@ -162,16 +162,16 @@ class MainMenuState extends MusicBeatState
 		
 		switch(FlxG.random.int(1, 3))
 		{
-        case 1:
-            char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));
-            char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');
-            char.animation.addByPrefix('idleN', 'idle', 15, true);
-            char.animation.play('idleN'):
-            char.scrollFactor.set();
-            FlxG.sound.play(Paths.sound('appear'), 2);
-            char.flipX = false;
-            char.antialiasing = ClientPrefs.globalAntialiasing;
-            add(char);
+                case 1:
+                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));
+                    char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');
+                    char.animation.addByPrefix('idleN', 'idle', 15, true);
+                    char.animation.play('idleN'):
+                    char.scrollFactor.set();
+                    FlxG.sound.play(Paths.sound('appear'), 2);
+                    char.flipX = false;
+                    char.antialiasing = ClientPrefs.globalAntialiasing;
+                    add(char);
 		}
 	}
 
