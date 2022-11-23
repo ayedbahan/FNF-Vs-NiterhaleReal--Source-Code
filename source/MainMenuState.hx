@@ -160,7 +160,7 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 		
-		switch(FlxG.random.int(1,3))
+		switch(FlxG.random.int(1, 3))
 		{
 	               case 1:
                     char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));//put your cords and image here
