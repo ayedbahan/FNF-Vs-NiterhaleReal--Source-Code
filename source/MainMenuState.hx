@@ -160,16 +160,16 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 		
-		switch(FlxG.random.int(1, 3))
+		switch(FlxG.random.int(1,3))
 		{
-                case 1:
-                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));
-                    char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');
-                    char.animation.addByPrefix('idleN', 'idle', 15, true);
-                    char.animation.play('idleN'):
+	               case 1:
+                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));//put your cords and image here
+                    char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');//here put the name of the xml
+                    char.animation.addByPrefix('idleN', 'idle', 15, true);//on 'idle normal' change it to your xml one
+                    char.animation.play('idleN');//you can rename the anim however you want to
                     char.scrollFactor.set();
                     FlxG.sound.play(Paths.sound('appear'), 2);
-                    char.flipX = false;
+                    char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
                     char.antialiasing = ClientPrefs.globalAntialiasing;
                     add(char);
 		}
